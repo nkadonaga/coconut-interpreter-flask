@@ -19,6 +19,10 @@ if os.path.exists('.env'):
 manager = Manager(app)
 
 @manager.command
+def runserver():
+    app.run(debug=True, host='0.0.0.0', port=5000)
+
+@manager.command
 def test(coverage=False):
     """Run the unit tests."""
     if coverage and not os.environ.get('FLASK_COVERAGE'):
